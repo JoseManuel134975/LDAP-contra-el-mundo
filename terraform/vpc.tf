@@ -39,16 +39,6 @@ resource "aws_subnet" "private" {
   }
 }
 
-# NAT Gateway
-resource "aws_nat_gateway" "nat" {
-  allocation_id = aws_eip.nat_eip.id
-  subnet_id     = aws_subnet.public.id
-
-  tags = {
-    Name = "nat-gateway"
-  }
-}
-
 # Route table for public subnet
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.main.id
