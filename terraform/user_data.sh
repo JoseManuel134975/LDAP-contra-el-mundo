@@ -25,7 +25,7 @@ services:
       - 8080:80
       - 8443:443
     volumes:
-      - C:/Users/josem/Desktop/Archivos de instancia/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - home/admin/httpd.conf:/usr/local/apache2/conf/httpd.conf
 
   tomcat:
     image: tomcat:latest
@@ -41,4 +41,4 @@ services:
       - 636" | sudo tee -a docker-compose.yml > /dev/null
 
 
-sudo docker-compose up
+sudo docker-compose up -d
