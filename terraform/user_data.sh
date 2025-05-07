@@ -24,6 +24,8 @@ services:
     ports:
       - 8080:80
       - 8443:443
+    volumes:
+      - C:/Users/josem/Desktop/Archivos de instancia/httpd.conf:/usr/local/apache2/conf/httpd.conf
 
   tomcat:
     image: tomcat:latest
