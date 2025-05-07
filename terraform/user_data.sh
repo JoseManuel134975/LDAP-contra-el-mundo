@@ -30,7 +30,7 @@ services:
     ports:
       - 9090:9090
     volumes:
-      - /home/admin/sample.war:/usr/local/tomcat/webapps/sample.war | sudo tee -a docker-compose.yml > /dev/null
+      - /home/admin/sample.war:/usr/local/tomcat/webapps/sample.war
 
   ldap:
     image: bitnami/openldap:latest
