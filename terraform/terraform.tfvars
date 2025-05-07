@@ -1,6 +1,7 @@
 aws_region    = "us-east-1"
 ami_id        = "ami-064519b8c76274859"
 instance_type = "t2.micro"
+name = "debian-docker"
 access_key    = "ASIAXUK5NAAKUVMCV2HO"
 secret_key    = "hwPqmSArprjNnZgOUTyL/fknx+xxkd7Zp942/qk7"
 session_token = "IQoJb3JpZ2luX2VjEK///////////wEaCXVzLXdlc3QtMiJGMEQCICTd64cxAlMEY0FUC5B9URXJb2hR4RI8PBp9CD092gBeAiBAPfYjCW6yQaNXlaZcoGPfKKeT5WhTgFEfIZoyyR97UyqmAghXEAEaDDUyNDcxODc2ODE0OSIMxzK1zwsLWqD9kAusKoMC0tUy3dLalTMn6Byym+/AxboNBvikGRAxj9jOxAUDVXbNGEqXdKJdkPdFTFyRezHQpWXdZwcwzSVmOaRhOPv13QdOp6MNu/jlj1k4qYy56+AhbCTrwh+oHBDoB4vj19oHsg+K1fJDpTACoZejNpC+YP9CvrtJesmMiLDial6zvVEAjW+yCbBWiRl0vTfWDv4VOQ8lAcYWljkHrM+LywtK53apl4Rx+3bCUp0eeh6N5Q4Ai/ldYH+mwgpjRPWcBTDjBZQmL+kEivq8dybuivvuU7lhsg3H/6xDVgrcxwwPA7wEZSl72qtvN5RwNiPrMq/acAdtaNWJmA/mb+Klv2nwIZ+g2jDV9uvABjqeAW1ruFTXwdO4J13FhABvc+4re1pP8wBG8RiqLFK1nASS8jgRzJganaENSSv9JJQpPJPDRtCoYusq+Wb/eaWjIQbfYMNs+FXHxxCmZLBdxdw7/JcqAM4ZKvD8JEzhrFyVRLSoGC/O1n+oc4YvliJPp7DtQ0MirI2N+KZ2qTRPm/LGDRnjCiZVl59DSrCPXsbsSNP9Q2Qv35579jvTT+Ra"
