@@ -36,7 +36,7 @@ services:
     image: bitnami/openldap:latest
     ports:
       - 389:389
-      - 636"
+      - 636" | sudo tee -a docker-compose.yml > /dev/null
 
 
 sudo docker-compose up
