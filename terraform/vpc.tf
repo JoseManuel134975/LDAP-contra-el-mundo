@@ -63,10 +63,6 @@ resource "aws_route_table_association" "public_assoc" {
 resource "aws_route_table" "private" {
   vpc_id = aws_vpc.main.id
 
-  route {
-    gateway_id = aws_internet_gateway.igw.id
-  }
-
   tags = {
     Name = "private-rt"
   }
