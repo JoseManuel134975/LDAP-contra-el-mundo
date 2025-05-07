@@ -14,6 +14,8 @@ sudo systemctl start docker
 
 cd /home/admin
 curl -O https://tomcat.apache.org/tomcat-6.0-doc/appdev/sample/sample.war
+sudo curl -L -o httpd.conf https://github.com/JoseManuel134975/LDAP-contra-el-mundo/raw/main/conf/httpd.conf
+sudo curl -L -o httpd.conf https://github.com/JoseManuel134975/LDAP-contra-el-mundo/raw/main/conf/httpd-vhosts.conf
 
 touch docker-compose.yml
 
@@ -25,7 +27,8 @@ services:
       - 8080:80
       - 8443:443
     volumes:
-      - home/admin/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - /home/admin/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - /home/admin/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf
 
   tomcat:
     image: tomcat:latest
