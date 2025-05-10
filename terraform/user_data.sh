@@ -25,6 +25,7 @@ echo -e "version: '3.8'
 services:      
   apache:
     image: httpd:latest
+    container_name: apache
     ports:
       - 8080:80
       - 8443:443
@@ -34,6 +35,7 @@ services:
 
   tomcat:
     image: tomcat:latest
+    container_name: tomcat
     ports:
       - 9090:9090
     volumes:
@@ -41,8 +43,9 @@ services:
       - /home/admin/context.xml:/usr/local/tomcat/conf/context.xml
       - /home/admin/web.xml:/usr/local/tomcat/webapps/sample/WEB-INF/web.xml
 
-  ldap:
+  openldap:
     image: bitnami/openldap:latest
+    container_name: openldap
     ports:
       - 389:389
       - 636
