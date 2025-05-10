@@ -47,8 +47,7 @@ services:
     image: bitnami/openldap:latest
     container_name: openldap
     ports:
-      - 389:389
-      - 636
+      - 1389:1389
     environment:
       - LDAP_ROOT=dc=midominio,dc=com
       - LDAP_ADMIN_USERNAME=admin

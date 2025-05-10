@@ -30,7 +30,7 @@
     -->
 
     <Realm className="org.apache.catalina.realm.JNDIRealm"
-       connectionURL="ldap://openldap:389"
+       connectionURL="ldap://openldap:1389"
        connectionName="cn=admin,dc=midominio,dc=com"
        connectionPassword="admin123"
        userBase="ou=users,dc=midominio,dc=com"
