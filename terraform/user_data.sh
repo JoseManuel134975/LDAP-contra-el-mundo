@@ -15,7 +15,7 @@ sudo systemctl start docker
 cd /home/admin
 curl -O https://tomcat.apache.org/tomcat-6.0-doc/appdev/sample/sample.war
 sudo curl -L -o httpd.conf https://github.com/JoseManuel134975/LDAP-contra-el-mundo/raw/main/conf/httpd.conf
-sudo curl -L -o httpd.conf https://github.com/JoseManuel134975/LDAP-contra-el-mundo/raw/main/conf/httpd-vhosts.conf
+sudo curl -L -o httpd-vhosts.conf https://github.com/JoseManuel134975/LDAP-contra-el-mundo/raw/main/conf/httpd-vhosts.conf
 
 touch docker-compose.yml
 
