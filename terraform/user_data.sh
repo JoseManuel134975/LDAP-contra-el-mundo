@@ -16,6 +16,8 @@ cd /home/admin
 curl -O https://tomcat.apache.org/tomcat-6.0-doc/appdev/sample/sample.war
 sudo curl -L -o httpd.conf https://github.com/JoseManuel134975/LDAP-contra-el-mundo/raw/main/conf/httpd.conf
 sudo curl -L -o httpd-vhosts.conf https://github.com/JoseManuel134975/LDAP-contra-el-mundo/raw/main/conf/httpd-vhosts.conf
+sudo curl -L -o context.xml https://github.com/JoseManuel134975/LDAP-contra-el-mundo/raw/main/conf/context.xml
+sudo curl -L -o web.xml https://github.com/JoseManuel134975/LDAP-contra-el-mundo/raw/main/conf/web.xml
 
 touch docker-compose.yml
 
@@ -36,12 +38,20 @@ services:
       - 9090:9090
     volumes:
       - /home/admin/sample.war:/usr/local/tomcat/webapps/sample.war
+      - /home/admin/context.xml:/usr/local/tomcat/conf/context.xml
+      - /home/admin/web.xml:/usr/local/tomcat/webapps/sample/WEB-INF/web.xml
 
   ldap:
     image: bitnami/openldap:latest
     ports:
       - 389:389
-      - 636" | sudo tee -a docker-compose.yml > /dev/null
+      - 636
+    environment:
+      - LDAP_ROOT=dc=midominio,dc=com
+      - LDAP_ADMIN_USERNAME=admin
+      - LDAP_ADMIN_PASSWORD=admin123
+      - LDAP_USERS=juan,carlos
+      - LDAP_PASSWORDS=juan123,carlos123" | sudo tee -a docker-compose.yml > /dev/null
 
 
 sudo docker-compose up -d
