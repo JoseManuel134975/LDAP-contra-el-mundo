@@ -31,10 +31,10 @@
 
     <Realm className="org.apache.catalina.realm.JNDIRealm"
        connectionURL="ldap://openldap:1389"
-       connectionName="cn=admin,dc=midominio,dc=com"
-       connectionPassword="admin123"
-       userBase="ou=users,dc=midominio,dc=com"
+       userBase="ou=users,dc=example,dc=org"
        userSearch="(uid={0})"
-       userSubtree="true"
+       rolseBase="ou=groups,dc=example,dc=org"
+       roleSearch="(memberUid={0})"
+       roleNested="true"
     />
 </Context>

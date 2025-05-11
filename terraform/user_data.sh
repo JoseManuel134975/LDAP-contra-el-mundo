@@ -16,12 +16,12 @@ cd /home/admin
 curl -O https://tomcat.apache.org/tomcat-6.0-doc/appdev/sample/sample.war
 sudo curl -L -o httpd.conf https://github.com/JoseManuel134975/LDAP-contra-el-mundo/raw/main/conf/httpd.conf
 sudo curl -L -o httpd-vhosts.conf https://github.com/JoseManuel134975/LDAP-contra-el-mundo/raw/main/conf/httpd-vhosts.conf
-sudo curl -L -o context.xml https://github.com/JoseManuel134975/LDAP-contra-el-mundo/raw/main/conf/context.xml
+sudo curl -L -o server.xml https://github.com/JoseManuel134975/LDAP-contra-el-mundo/raw/main/conf/server.xml
 sudo curl -L -o web.xml https://github.com/JoseManuel134975/LDAP-contra-el-mundo/raw/main/conf/web.xml
 
 touch docker-compose.yml
 
-echo -e "version: '3.8'
+echo -e "version: '2'
 services:      
   apache:
     image: httpd:latest
@@ -40,8 +40,10 @@ services:
       - 9090:9090
     volumes:
       - /home/admin/sample.war:/usr/local/tomcat/webapps/sample.war
-      - /home/admin/context.xml:/usr/local/tomcat/conf/context.xml
+      - /home/admin/server.xml:/usr/local/tomcat/conf/server.xml
       - /home/admin/web.xml:/usr/local/tomcat/webapps/sample/WEB-INF/web.xml
+    depends_on:
+      - openldap
 
   openldap:
     image: bitnami/openldap:latest
@@ -49,7 +51,6 @@ services:
     ports:
       - 1389:1389
     environment:
-      - LDAP_ROOT=dc=midominio,dc=com
       - LDAP_ADMIN_USERNAME=admin
       - LDAP_ADMIN_PASSWORD=admin123
       - LDAP_USERS=juan,carlos
