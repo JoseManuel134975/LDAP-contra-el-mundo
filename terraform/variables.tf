@@ -14,11 +14,6 @@ variable "instance_type" {
   type = string
 }
 
-variable "name" {
-  description = "name to pass to Name tag"
-  type = string
-}
-
 variable "access_key" {
   type = string
 }
