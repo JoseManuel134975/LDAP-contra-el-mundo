@@ -38,5 +38,5 @@ jobs:
         run: terraform apply -auto-approve
 
       - name: Upload terraform-state to S3
-        run: aws s3 cp ./terraform/terraform.tfstate s3://tfstate-for-ec2-instance-jose-manuel/terraform.tfstate
+        run: aws s3 cp ./terraform/terraform.tfstate s3://tfstate-jose-manuel/terraform.tfstate
 
