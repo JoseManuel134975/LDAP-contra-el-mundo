@@ -3,7 +3,7 @@ resource "aws_s3_bucket" "bucket" {
   force_destroy = true
 
   tags = {
-    Name = var.name
+    Name = "tfstate-jose-manuel"
   }
 }
 
