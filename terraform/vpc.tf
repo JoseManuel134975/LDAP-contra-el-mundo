@@ -16,6 +16,20 @@ resource "aws_internet_gateway" "igw" {
   }
 }
 
+# IP elástica
+resource "aws_eip" "nat" {
+  domain = "vpc"
+}
+
+# NAT 
+resource "aws_nat_gateway" "nat" {
+  allocation_id = aws_eip.nat.id
+  subnet_id     = aws_subnet.public.id
+  tags = {
+    Name = "NAT Gateway"
+  }
+}
+
 # Public Subnet
 resource "aws_subnet" "public" {
   vpc_id                  = aws_vpc.main.id
@@ -63,6 +77,11 @@ resource "aws_route_table_association" "public_assoc" {
 resource "aws_route_table" "private" {
   vpc_id = aws_vpc.main.id
 
+  route {
+    cidr_block = "0.0.0.0/0"
+    nat_gateway_id = aws_nat_gateway.nat.id
+  }
+
   tags = {
     Name = "private-rt"
   }
@@ -96,13 +115,6 @@ resource "aws_security_group" "allow_instance_ports" {
   }
 
   ingress {
-    from_port   = 8080
-    to_port     = 8080
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  ingress {
     from_port   = 443
     to_port     = 443
     protocol    = "tcp"
@@ -111,7 +123,7 @@ resource "aws_security_group" "allow_instance_ports" {
 
   ingress {
     from_port   = 8443
-    to_port     = 8443
+    to_port     = 8433
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
@@ -124,8 +136,22 @@ resource "aws_security_group" "allow_instance_ports" {
   }
 
   ingress {
+    from_port   = 1389
+    to_port     = 1389
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
     from_port   = 636
     to_port     = 636
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  ingress {
+    from_port   = 1636
+    to_port     = 1636
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
