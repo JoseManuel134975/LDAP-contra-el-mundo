@@ -18,9 +18,12 @@ touch dockerfile
 
 echo -e "
 FROM bitnami/openldap:latest
-ENV LDAP_ADMIN_USERNAME="admin"
-ENV LDAP_ADMIN_PASSWORD="admin"
-ENV LDAP_USERS="maria,juan"
-ENV LDAP_PASSWORDS="maria,juan"
+ENV LDAP_ADMIN_USERNAME admin
+ENV LDAP_ADMIN_PASSWORD admin
+ENV LDAP_USERS maria,juan
+ENV LDAP_PASSWORDS maria,juan
 EXPOSE 389 636 1389 1636" | sudo tee -a dockerfile > /dev/null
 
+
+docker build -t openldap-img .
+docker run -d --name openldap -p 389:389 -p 636:636 -p 1389:1389 -p 1636:1636 openldap-img
