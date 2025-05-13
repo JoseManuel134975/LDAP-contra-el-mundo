@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "bucket" {
-  bucket        = "tfstate-for-ec2-instance-jose-manuel"
+  bucket        = "tfstate-jose-manuel"
   force_destroy = true
 
   tags = {
