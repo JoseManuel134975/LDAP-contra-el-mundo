@@ -22,7 +22,7 @@ resource "aws_eip" "nat" {
 }
 
 # NAT 
-resource "aws_nat_gateway" "nat" {
+resource "aws_nat_gateway" "nat-igw" {
   allocation_id = aws_eip.nat.id
   subnet_id     = aws_subnet.public.id
   tags = {
@@ -79,7 +79,7 @@ resource "aws_route_table" "private" {
 
   route {
     cidr_block = "0.0.0.0/0"
-    nat_gateway_id = aws_nat_gateway.nat.id
+    nat_gateway_id = aws_nat_gateway.nat-igw.id
   }
 
   tags = {

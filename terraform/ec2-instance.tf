@@ -20,6 +20,7 @@ resource "aws_instance" "ldap" {
   vpc_security_group_ids = [aws_security_group.allow_instance_ports.id]
   user_data              = file("user_data_ldap.sh")
   key_name = aws_key_pair.debian.key_name
+  private_ip = var.private_ip
 
   tags = {
     Name = "Debian-ldap"
