@@ -1,0 +1,22 @@
+
+services:      
+  apache:
+    image: httpd:latest
+    container_name: apache
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - /home/admin/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - /home/admin/certs/ca.cer:/usr/local/apache2/conf/ca.cer
+      - /home/admin/certs/joseapache.work.gd.cer:/usr/local/apache2/conf/joseapache.work.gd.cer
+      - /home/admin/certs/joseapache.work.gd.key:/usr/local/apache2/conf/joseapache.work.gd.key
+#      - /home/admin/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf
+
+  tomcat:
+    image: tomcat:latest
+    container_name: tomcat
+    ports:
+      - 9090:9090
+    volumes:
+      - /home/admin/sample.war:/usr/local/tomcat/webapps/sample.war
