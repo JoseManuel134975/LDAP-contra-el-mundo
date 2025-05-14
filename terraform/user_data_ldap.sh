@@ -14,19 +14,19 @@ sudo systemctl start docker
 
 cd /home/admin
 
-touch dockerfile
+touch Dockerfile
 
 echo -e "
 FROM bitnami/openldap:latest
 ENV LDAP_ADMIN_USERNAME="admin"
-ENV LDAP_ADMIN_PASSWORD="admin"
+#ENV LDAP_ADMIN_PASSWORD="admin"
 ENV LDAP_USERS="maria,juan"
 ENV LDAP_PASSWORDS="maria,juan"
 EXPOSE 389 
 EXPOSE 636 
 EXPOSE 1389 
-EXPOSE 1636" | sudo tee -a dockerfile > /dev/null
+EXPOSE 1636" | sudo tee -a Dockerfile > /dev/null
 
 
-docker build -t openldap-img .
-docker run -d --name openldap -p 389:389 -p 636:636 -p 1389:1389 -p 1636:1636 openldap-img
+sudo docker build -t openldap-img .
+sudo docker run -d --name openldap -p 389:389 -p 636:636 -p 1389:1389 -p 1636:1636 -e LDAP_ADMIN_PASSWORD="admin" openldap-img

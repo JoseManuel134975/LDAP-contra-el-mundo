@@ -29,7 +29,7 @@ services:
       - 8443:443
     volumes:
       - /home/admin/httpd.conf:/usr/local/apache2/conf/httpd.conf
-      - /home/admin/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf
+      #- /home/admin/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf
 
   tomcat:
     image: tomcat:latest
