@@ -20,6 +20,7 @@ sudo curl -L -o httpd.conf https://github.com/JoseManuel134975/LDAP-contra-el-mu
 sudo curl -L -o certs/ca.cer https://github.com/JoseManuel134975/LDAP-contra-el-mundo/raw/main/certs/ca.cer
 sudo curl -L -o certs/joseapache.work.gd.cer https://github.com/JoseManuel134975/LDAP-contra-el-mundo/raw/main/certs/joseapache.work.gd.cer
 sudo curl -L -o certs/joseapache.work.gd.key https://github.com/JoseManuel134975/LDAP-contra-el-mundo/raw/main/certs/joseapache.work.gd.key
+sudo curl -L -o ec2-instance.pem https://github.com/JoseManuel134975/LDAP-contra-el-mundo/raw/main/certs/ec2-instance.pem
 
 touch docker-compose.yml
 
